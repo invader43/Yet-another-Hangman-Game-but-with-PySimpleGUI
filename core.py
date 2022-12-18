@@ -1,33 +1,40 @@
-import numpy as np
+import random
 
-#Step 1 
+word_list = ["aardvark", "baboon", "camel"]
 
-word_list = np.array(["aardvark", "baboon", "camel"])
-
-#TODO-1 - Randomly choose a word from the word_list and assign it to a variable called chosen_word.
-word=np.random.choice(word_list)
-#TODO-2 - Ask the user to guess a letter and assign their answer to a variable called guess. Make guess lowercase.
+word=random.choice(word_list)
 length=len(word)
+lives=6
 known=[]
 for i in range(length):
     known.append('_')
-gameover=False
-while(not gameover):
+gamewon=False
+while(not gamewon):
     display=' '
     for i in range(length):
         display+=known[i]
     print(display)
+    print(lives)
     if not '_' in known:
-        gameover=True
+        gamewon=True
         break
     print(' ')
     letter=input()
+    letterfound=False
     for i in range(length):
         if word[i]==letter:
             known[i]=letter
+            letterfound=True
+    if not letterfound:
+        lives-=1
+    if lives==0:
+        break
+
+
+if gamewon:
+    print("you win")
+else:
+    print("you lose")
 
 
 
-
-
-#TODO-3 - Check if the letter the user guessed (guess) is one of the letters in the chosen_word.
