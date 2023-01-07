@@ -25,7 +25,7 @@ layout = [
     [sg.Column(col1, element_justification='c' ),
     sg.Column(col2, element_justification='c')]
     ]
-window = sg.Window("Calculator", layout)
+window = sg.Window("Hangman", layout)
 gamewon=False
 # Event loop
 while True:
